@@ -158,7 +158,7 @@ export default function ProductCategory() {
               transition={{ delay: 0.4 }}
               className="mt-14"
             >
-              <h3 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-5">
+              <h3 className="text-sm font-semibold !text-white uppercase tracking-wider mb-5">
                 Browse by Type
               </h3>
               <div className="flex flex-wrap gap-4">
@@ -172,11 +172,11 @@ export default function ProductCategory() {
                     className="group"
                   >
                     <button
-                      className="relative px-6 py-3.5 rounded-xl bg-black/30 backdrop-blur-md border border-white/10 text-white font-medium transition-all duration-300 hover:bg-black/40 hover:border-orange-500/40 hover:shadow-lg hover:shadow-orange-500/10 overflow-hidden"
+                      className="relative px-6 py-3.5 rounded-xl bg-white/15 backdrop-blur-md border border-white/25 text-white font-semibold drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] transition-all duration-300 hover:bg-white/20 hover:border-orange-400/60 hover:shadow-xl hover:shadow-orange-500/15 overflow-hidden"
                     >
                       {/* Hover glow */}
                       <div className="absolute inset-0 bg-gradient-to-r from-orange-500/0 via-orange-500/10 to-orange-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <span className="relative z-10 flex items-center gap-2">
+                      <span className="relative z-10 flex items-center gap-2 text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
                         {sub.name}
                         <ChevronRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-orange-400" />
                       </span>

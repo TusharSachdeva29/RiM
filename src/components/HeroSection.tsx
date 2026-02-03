@@ -227,7 +227,7 @@ export function HeroSection() {
               variants={itemVariants}
               className="mt-12 pt-8 border-t border-white/10"
             >
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 text-sm text-gray-400">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 text-sm text-white font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.55)]">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                   <span>ISO Certified</span>

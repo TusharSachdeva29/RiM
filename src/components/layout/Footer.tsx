@@ -118,7 +118,7 @@ export function Footer() {
                 <span className="text-white font-heading font-bold text-4xl">R</span>
               </motion.div>
               <div>
-                <h2 className="font-heading font-bold text-3xl tracking-tight">RiM</h2>
+                <h2 className="font-heading font-bold text-3xl tracking-tight text-white">RiM</h2>
                 <p className="text-sm text-primary font-semibold tracking-wide">THE HOME OF QUALITY</p>
               </div>
             </Link>
@@ -170,7 +170,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <motion.div className="lg:col-span-2" variants={itemVariants}>
-            <h3 className="font-heading font-bold text-lg mb-8 flex items-center gap-3">
+            <h3 className="font-heading font-bold text-lg mb-8 flex items-center gap-3 text-white">
               <span className="w-10 h-1 bg-gradient-to-r from-primary to-orange-400 rounded-full" />
               Quick Links
             </h3>
@@ -184,7 +184,7 @@ export function Footer() {
                 >
                   <Link
                     to={link.href}
-                    className="text-gray-300 hover:text-white hover:pl-2 transition-all duration-300 inline-flex items-center gap-3 group"
+                    className="!text-white hover:!text-white hover:pl-2 transition-all duration-300 inline-flex items-center gap-3 group drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]"
                   >
                     <span className="w-2 h-2 rounded-full bg-primary/60 group-hover:bg-primary group-hover:shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300" />
                     <span className="group-hover:text-primary transition-colors">{link.label}</span>
@@ -196,7 +196,7 @@ export function Footer() {
 
           {/* Product Categories - Glassmorphism Card */}
           <motion.div className="lg:col-span-3" variants={itemVariants}>
-            <h3 className="font-heading font-bold text-lg mb-8 flex items-center gap-3">
+            <h3 className="font-heading font-bold text-lg mb-8 flex items-center gap-3 text-white">
               <span className="w-10 h-1 bg-gradient-to-r from-primary to-orange-400 rounded-full" />
               Product Lines
             </h3>
@@ -211,7 +211,7 @@ export function Footer() {
                   >
                     <Link
                       to={`/products/${category.slug}`}
-                      className="text-gray-300 hover:text-white transition-all duration-300 inline-flex items-center gap-3 group w-full py-1"
+                      className="!text-white hover:!text-white transition-all duration-300 inline-flex items-center gap-3 group w-full py-1 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]"
                     >
                       <span className="w-2 h-2 rounded-full bg-primary/60 group-hover:bg-primary group-hover:shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all" />
                       <span className="group-hover:text-primary transition-colors flex-1 truncate">{category.name}</span>
@@ -222,7 +222,7 @@ export function Footer() {
               </ul>
               <Link 
                 to="/products" 
-                className="mt-4 pt-4 border-t border-white/15 flex items-center gap-2 text-primary hover:text-orange-400 transition-colors font-medium text-sm"
+                className="mt-4 pt-4 border-t border-white/15 flex items-center gap-2 !text-primary hover:!text-orange-400 transition-colors font-medium text-sm"
               >
                 View All Products
                 <ArrowRight className="h-4 w-4" />
@@ -232,43 +232,43 @@ export function Footer() {
 
           {/* Contact Info - Glassmorphism Card */}
           <motion.div className="lg:col-span-3" variants={itemVariants}>
-            <h3 className="font-heading font-bold text-lg mb-8 flex items-center gap-3">
+            <h3 className="font-heading font-bold text-lg mb-8 flex items-center gap-3 text-white">
               <span className="w-10 h-1 bg-gradient-to-r from-primary to-orange-400 rounded-full" />
               Contact Us
             </h3>
             <div className="p-5 rounded-2xl bg-white/[0.04] backdrop-blur-sm border border-white/10 space-y-5">
               <a
                 href="tel:+911234567890"
-                className="flex items-center gap-4 text-gray-300 hover:text-white transition-all duration-300 group p-3 rounded-xl hover:bg-white/[0.05]"
+                className="flex items-center gap-4 !text-white hover:!text-white transition-all duration-300 group p-3 rounded-xl hover:bg-white/[0.05] drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)]"
               >
                 <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all">
                   <Phone className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-0.5">Phone</p>
+                  <p className="text-xs text-gray-200 uppercase tracking-wider mb-0.5">Phone</p>
                   <span className="font-semibold text-white">+91 123 456 7890</span>
                 </div>
               </a>
               
               <a
                 href="mailto:rimswitchgear@gmail.com"
-                className="flex items-center gap-4 text-gray-300 hover:text-white transition-all duration-300 group p-3 rounded-xl hover:bg-white/[0.05]"
+                className="flex items-center gap-4 !text-white hover:!text-white transition-all duration-300 group p-3 rounded-xl hover:bg-white/[0.05] drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)]"
               >
                 <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all">
                   <Mail className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-0.5">Email</p>
+                  <p className="text-xs text-gray-200 uppercase tracking-wider mb-0.5">Email</p>
                   <span className="font-semibold text-white text-sm">rimswitchgear@gmail.com</span>
                 </div>
               </a>
               
-              <div className="flex items-start gap-4 text-gray-300 p-3 rounded-xl">
+              <div className="flex items-start gap-4 text-white p-3 rounded-xl drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)]">
                 <div className="p-3 rounded-xl bg-primary/10">
                   <MapPin className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-0.5">Location</p>
+                  <p className="text-xs text-gray-200 uppercase tracking-wider mb-0.5">Location</p>
                   <span className="font-semibold text-white text-sm leading-relaxed">
                     Royal Industries,<br />
                     Mansa-151505, Punjab, India
@@ -276,12 +276,12 @@ export function Footer() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 text-gray-300 p-3 rounded-xl border-t border-white/10 pt-5">
+              <div className="flex items-center gap-4 text-white p-3 rounded-xl border-t border-white/10 pt-5 drop-shadow-[0_1px_6px_rgba(0,0,0,0.35)]">
                 <div className="p-3 rounded-xl bg-primary/10">
                   <Clock className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider mb-0.5">Business Hours</p>
+                  <p className="text-xs text-gray-200 uppercase tracking-wider mb-0.5">Business Hours</p>
                   <span className="font-semibold text-white text-sm">Mon - Sat: 9AM - 6PM</span>
                 </div>
               </div>
@@ -309,7 +309,7 @@ export function Footer() {
               <div className="w-8 h-8 rounded-lg bg-rim-gradient flex items-center justify-center">
                 <span className="text-white font-heading font-bold text-sm">R</span>
               </div>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-400 text-sm">
                 © {currentYear} <span className="text-white font-semibold">RiM - Royal Industries</span>. All rights reserved.
               </p>
             </motion.div>
@@ -325,7 +325,7 @@ export function Footer() {
                 <a 
                   key={link.label}
                   href={link.href} 
-                  className="text-sm text-gray-500 hover:text-primary transition-colors duration-300 relative group"
+                  className="text-sm text-gray-400 hover:text-primary transition-colors duration-300 relative group"
                 >
                   {link.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
@@ -335,7 +335,7 @@ export function Footer() {
 
             {/* Made with love badge */}
             <motion.div 
-              className="text-gray-600 text-xs flex items-center gap-2"
+              className="text-gray-400 text-xs flex items-center gap-2"
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 1 }}
