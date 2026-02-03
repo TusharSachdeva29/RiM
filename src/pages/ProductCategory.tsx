@@ -83,11 +83,11 @@ export default function ProductCategory() {
           <motion.nav 
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm text-gray-400 mb-10"
+            className="flex items-center gap-2 text-sm text-white/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] mb-10"
           >
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
+            <Link to="/" className="text-white/90 hover:text-white transition-colors">Home</Link>
             <ChevronRight className="h-4 w-4" />
-            <Link to="/products" className="hover:text-white transition-colors">Products</Link>
+            <Link to="/products" className="text-white/90 hover:text-white transition-colors">Products</Link>
             <ChevronRight className="h-4 w-4" />
             <span className="text-white font-medium">{category.name}</span>
           </motion.nav>

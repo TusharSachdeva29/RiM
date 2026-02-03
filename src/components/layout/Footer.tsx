@@ -187,7 +187,7 @@ export function Footer() {
                     className="!text-white hover:!text-white hover:pl-2 transition-all duration-300 inline-flex items-center gap-3 group drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]"
                   >
                     <span className="w-2 h-2 rounded-full bg-primary/60 group-hover:bg-primary group-hover:shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all duration-300" />
-                    <span className="group-hover:text-primary transition-colors">{link.label}</span>
+                    <span className="text-white group-hover:text-primary transition-colors">{link.label}</span>
                   </Link>
                 </motion.li>
               ))}
@@ -214,7 +214,7 @@ export function Footer() {
                       className="!text-white hover:!text-white transition-all duration-300 inline-flex items-center gap-3 group w-full py-1 drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]"
                     >
                       <span className="w-2 h-2 rounded-full bg-primary/60 group-hover:bg-primary group-hover:shadow-[0_0_8px_rgba(249,115,22,0.6)] transition-all" />
-                      <span className="group-hover:text-primary transition-colors flex-1 truncate">{category.name}</span>
+                      <span className="text-white group-hover:text-primary transition-colors flex-1 truncate">{category.name}</span>
                       <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-primary" />
                     </Link>
                   </motion.li>
