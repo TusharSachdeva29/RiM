@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
-import { Menu, X, ChevronDown, Phone, Mail, Search } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Mail, Search, Cpu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { categories, getProductCount } from "@/lib/data/categories";
@@ -142,43 +142,114 @@ export function Header() {
                     <AnimatePresence>
                       {isProductsOpen && (
                         <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-[800px]"
+                          initial={{ opacity: 0, y: 15, scale: 0.98 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                          transition={{ 
+                            duration: 0.25, 
+                            ease: [0.4, 0, 0.2, 1],
+                          }}
+                          className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-[950px]"
                         >
-                          <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-100 p-6 grid grid-cols-3 gap-4">
-                            {categories.slice(0, 9).map((category, idx) => (
-                              <motion.div
-                                key={category.id}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: idx * 0.03 }}
-                              >
-                                <Link
-                                  to={`/products/${category.slug}`}
-                                  className="flex items-start gap-3 p-3 rounded-xl hover:bg-accent/80 transition-all group"
+                          <div className="bg-white backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200/60 overflow-hidden">
+                            <div className="flex">
+                              {/* Left Side - Product Category Grid (70%) */}
+                              <div className="flex-[7] p-6">
+                                <div className="grid grid-cols-3 gap-3">
+                                  {categories.slice(0, 9).map((category, idx) => (
+                                    <motion.div
+                                      key={category.id}
+                                      initial={{ opacity: 0, y: 12 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      transition={{ 
+                                        delay: idx * 0.04,
+                                        duration: 0.3,
+                                        ease: "easeOut"
+                                      }}
+                                    >
+                                      <Link
+                                        to={`/products/${category.slug}`}
+                                        className="group flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5 border border-transparent hover:border-gray-100"
+                                      >
+                                        <div className="w-11 h-11 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center shrink-0 group-hover:bg-orange-100 group-hover:scale-105 transition-all duration-200 shadow-sm">
+                                          <category.icon className="h-5 w-5" />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                          <div className="flex items-center gap-2">
+                                            <h3 className="font-semibold text-sm text-slate-900 truncate">
+                                              {category.name}
+                                            </h3>
+                                            <ChevronDown className="h-3.5 w-3.5 -rotate-90 text-gray-400 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-200" />
+                                          </div>
+                                          <p className="text-xs text-gray-500 mt-1">
+                                            {getProductCount(category.slug)} products
+                                          </p>
+                                        </div>
+                                      </Link>
+                                    </motion.div>
+                                  ))}
+                                </div>
+                                
+                                {/* Footer - View All Categories Button */}
+                                <motion.div
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  transition={{ delay: 0.35 }}
+                                  className="mt-5 pt-4 border-t border-gray-100"
                                 >
-                                  <div className="p-2 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
-                                    <category.icon className="h-5 w-5" />
+                                  <Link
+                                    to="/products"
+                                    className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-medium text-sm rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-md shadow-orange-500/20 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-0.5"
+                                  >
+                                    View All Categories
+                                    <ChevronDown className="h-4 w-4 -rotate-90" />
+                                  </Link>
+                                </motion.div>
+                              </div>
+
+                              {/* Right Side - Spotlight Panel (30%) */}
+                              <motion.div
+                                initial={{ opacity: 0, x: 10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.15, duration: 0.3 }}
+                                className="flex-[3] bg-gradient-to-br from-gray-50 to-gray-100/80 p-6 border-l border-gray-100"
+                              >
+                                <div className="h-full flex flex-col">
+                                  <span className="text-[10px] font-bold uppercase tracking-wider text-orange-600 bg-orange-100 px-2 py-1 rounded-full w-fit mb-3">
+                                    Featured
+                                  </span>
+                                  <h4 className="font-heading font-bold text-lg text-slate-900 mb-2">
+                                    New Control Panels Available
+                                  </h4>
+                                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                                    Discover our latest range of advanced control panels with smart automation features.
+                                  </p>
+                                  
+                                  {/* Placeholder Image */}
+                                  <div className="relative flex-1 min-h-[120px] rounded-xl bg-gradient-to-br from-orange-100 to-orange-50 overflow-hidden mb-4 border border-orange-200/50">
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                      <div className="text-center">
+                                        <div className="w-16 h-16 mx-auto rounded-full bg-white/80 flex items-center justify-center shadow-lg mb-2">
+                                          <Cpu className="h-8 w-8 text-orange-500" />
+                                        </div>
+                                        <p className="text-xs text-orange-700 font-medium">Control Panels</p>
+                                      </div>
+                                    </div>
+                                    {/* Decorative elements */}
+                                    <div className="absolute -right-4 -bottom-4 w-24 h-24 rounded-full bg-orange-200/40" />
+                                    <div className="absolute -left-2 -top-2 w-12 h-12 rounded-full bg-orange-200/30" />
                                   </div>
-                                  <div>
-                                    <h3 className="font-medium text-sm text-slate-900">{category.name}</h3>
-                                    <p className="text-xs text-slate-500 mt-0.5">
-                                      {getProductCount(category.slug)} products
-                                    </p>
-                                  </div>
-                                </Link>
+                                  
+                                  <Link
+                                    to="/products/control-panels"
+                                    className="group inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:text-orange-700 transition-colors"
+                                  >
+                                    View Catalog
+                                    <ChevronDown className="h-4 w-4 -rotate-90 group-hover:translate-x-1 transition-transform" />
+                                  </Link>
+                                </div>
                               </motion.div>
-                            ))}
-                            <Link
-                              to="/products"
-                              className="col-span-3 mt-2 pt-4 border-t border-gray-100 text-center text-primary font-medium hover:underline flex items-center justify-center gap-2"
-                            >
-                              View All Categories
-                              <ChevronDown className="h-4 w-4 -rotate-90" />
-                            </Link>
+                            </div>
                           </div>
                         </motion.div>
                       )}

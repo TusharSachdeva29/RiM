@@ -33,6 +33,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useEmailSender } from "@/hooks/use-email";
 
 const dealershipSchema = z.object({
   businessName: z.string().min(2, "Business name is required"),
@@ -113,6 +114,7 @@ const states = [
 
 export default function Dealership() {
   const { toast } = useToast();
+  const { sendDealershipEmail, isLoading: isEmailLoading } = useEmailSender();
   const formRef = useRef<HTMLDivElement>(null);
   const benefitsRef = useRef<HTMLDivElement>(null);
   
@@ -126,6 +128,9 @@ export default function Dealership() {
     resolver: zodResolver(dealershipSchema),
   });
 
+  // Combined loading state
+  const isLoading = isSubmitting || isEmailLoading;
+
   const scrollToForm = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -135,16 +140,32 @@ export default function Dealership() {
   };
 
   const onSubmit = async (data: DealershipFormData) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    console.log("Dealership form submitted:", data);
-    
-    toast({
-      title: "Application Submitted!",
-      description: "Thank you for your interest. Our team will contact you within 48 hours.",
+    // Send email via EmailJS
+    const result = await sendDealershipEmail({
+      businessName: data.businessName,
+      ownerName: data.ownerName,
+      email: data.email,
+      phone: data.phone,
+      city: data.city,
+      state: data.state,
+      experience: data.experience,
+      currentBusiness: data.currentBusiness,
+      message: data.message,
     });
     
-    reset();
+    if (result.success) {
+      toast({
+        title: "Application Submitted Successfully!",
+        description: result.message,
+      });
+      reset();
+    } else {
+      toast({
+        title: "Failed to Submit Application",
+        description: result.message,
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -614,11 +635,17 @@ export default function Dealership() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full sm:w-auto bg-rim-gradient hover:opacity-90 shadow-lg shadow-primary/25"
-                    disabled={isSubmitting}
+                    className="w-full sm:w-auto bg-rim-gradient hover:opacity-90 shadow-lg shadow-primary/25 disabled:opacity-70 disabled:cursor-not-allowed"
+                    disabled={isLoading}
                   >
-                    {isSubmitting ? (
-                      "Submitting..."
+                    {isLoading ? (
+                      <span className="flex items-center gap-2">
+                        <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                        </svg>
+                        Submitting Application...
+                      </span>
                     ) : (
                       <>
                         <Send className="h-4 w-4 mr-2" />

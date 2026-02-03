@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Phone, Mail, MapPin, Send, Headphones } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Headphones, CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useEmailSender } from "@/hooks/use-email";
 import { categories } from "@/lib/data/categories";
 
 const contactSchema = z.object({
@@ -55,6 +56,7 @@ const contactCards = [
 
 export default function Contact() {
   const { toast } = useToast();
+  const { sendContactEmail, isLoading: isEmailLoading } = useEmailSender();
   const {
     register,
     handleSubmit,
@@ -66,18 +68,33 @@ export default function Contact() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    console.log("Form submitted:", data);
-    
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
+    // Send email via EmailJS
+    const result = await sendContactEmail({
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      company: data.company,
+      productInterest: data.productInterest,
+      message: data.message,
     });
     
-    reset();
+    if (result.success) {
+      toast({
+        title: "Message Sent Successfully!",
+        description: result.message,
+      });
+      reset();
+    } else {
+      toast({
+        title: "Failed to Send Message",
+        description: result.message,
+        variant: "destructive",
+      });
+    }
   };
+
+  // Combined loading state
+  const isLoading = isSubmitting || isEmailLoading;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -276,10 +293,10 @@ export default function Contact() {
                   <Button
                     type="submit"
                     size="lg"
-                    className="w-full h-14 text-base font-semibold rounded-xl bg-[#E87722] hover:bg-[#d56a1a] text-white shadow-lg shadow-[#E87722]/25 hover:shadow-xl hover:shadow-[#E87722]/30 transition-all duration-300"
-                    disabled={isSubmitting}
+                    className="w-full h-14 text-base font-semibold rounded-xl bg-[#E87722] hover:bg-[#d56a1a] text-white shadow-lg shadow-[#E87722]/25 hover:shadow-xl hover:shadow-[#E87722]/30 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed"
+                    disabled={isLoading}
                   >
-                    {isSubmitting ? (
+                    {isLoading ? (
                       <span className="flex items-center justify-center gap-2">
                         <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
