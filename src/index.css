@@ -1,0 +1,573 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RiM - The Home of Quality
+   Design System: Premium Electrical Products
+   Colors defined in HSL for proper theming
+*/
+
+@layer base {
+  :root {
+    /* RiM Brand Colors */
+    --rim-orange: 24 100% 63%;
+    --rim-orange-dark: 24 84% 53%;
+    --rim-orange-light: 24 100% 75%;
+    
+    /* Dark/Charcoal Tones */
+    --rim-charcoal: 0 0% 18%;
+    --rim-charcoal-dark: 0 0% 10%;
+    --rim-charcoal-light: 0 0% 25%;
+    
+    /* Accent Gold */
+    --rim-gold: 43 56% 52%;
+    --rim-gold-light: 43 56% 65%;
+    
+    /* Semantic Colors - Light Mode */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 24 100% 63%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 18%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 24 100% 95%;
+    --accent-foreground: 24 84% 53%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 24 100% 63%;
+
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 25%;
+    --sidebar-primary: 24 100% 63%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 24 100% 95%;
+    --sidebar-accent-foreground: 24 84% 53%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 24 100% 63%;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 24 100% 63%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 18%;
+    --accent-foreground: 24 100% 70%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 24 100% 63%;
+    
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 24 100% 63%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 24 100% 70%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 24 100% 63%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-slate-900 font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight text-slate-900;
+  }
+
+  p, span, li, a {
+    @apply text-slate-800;
+  }
+
+  a {
+    @apply text-slate-800 hover:text-primary transition-colors;
+  }
+}
+
+@layer components {
+  /* RiM Button Styles */
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-rim-orange-dark transition-all duration-300;
+  }
+  
+  .btn-secondary {
+    @apply bg-rim-charcoal text-white hover:bg-rim-charcoal-light transition-all duration-300;
+  }
+
+  /* Button defaults */
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-rim-orange to-rim-orange-dark bg-clip-text text-transparent;
+  }
+
+  /* Card Hover Effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Card Base */
+  .bg-card {
+    @apply bg-white text-slate-900;
+  }
+
+  /* Link Underline Animation */
+  .link-underline {
+    @apply relative text-slate-900;
+  }
+  
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 origin-right transition-transform duration-300;
+  }
+  
+  .link-underline:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  /* Section Container */
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Glass Effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+}
+
+@layer utilities {
+  /* Custom Scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  /* Premium Button Effects */
+  .btn-glow {
+    @apply relative overflow-hidden;
+  }
+
+  .btn-glow::after {
+    content: '';
+    @apply absolute inset-0 bg-white/20 transform scale-x-0 origin-left transition-transform duration-300;
+  }
+
+  .btn-glow:hover::after {
+    @apply scale-x-100;
+  }
+
+  /* Text Gradient Animation */
+  .text-gradient-animated {
+    background: linear-gradient(90deg, 
+      hsl(var(--rim-orange)), 
+      hsl(var(--rim-gold)), 
+      hsl(var(--rim-orange)));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 3s linear infinite;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  /* Smooth Shadow Transition */
+  .shadow-smooth {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  /* Premium Card Hover */
+  .card-premium {
+    @apply transition-all duration-300;
+  }
+
+  .card-premium:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Selection Styling */
+::selection {
+  background-color: hsl(var(--rim-orange) / 0.3);
+  color: hsl(var(--rim-charcoal));
+}
+
+/* ============================================
+   PREMIUM HERO SECTION STYLES
+   ============================================ */
+
+/* Premium Dark Gradient Background */
+.hero-premium-bg {
+  background: linear-gradient(
+    135deg,
+    #0a0a0f 0%,
+    #0d1117 25%,
+    #101820 50%,
+    #0d1525 75%,
+    #0a1628 100%
+  );
+}
+
+/* Circuit Pattern Overlay */
+.hero-circuit-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10h80v80H10z' fill='none' stroke='%23ffffff' stroke-width='0.5'/%3E%3Cpath d='M30 10v20h40V10' fill='none' stroke='%23ffffff' stroke-width='0.5'/%3E%3Cpath d='M30 90V70h40v20' fill='none' stroke='%23ffffff' stroke-width='0.5'/%3E%3Cpath d='M10 30h20v40H10' fill='none' stroke='%23ffffff' stroke-width='0.5'/%3E%3Cpath d='M90 30H70v40h20' fill='none' stroke='%23ffffff' stroke-width='0.5'/%3E%3Ccircle cx='30' cy='30' r='3' fill='%23ffffff'/%3E%3Ccircle cx='70' cy='30' r='3' fill='%23ffffff'/%3E%3Ccircle cx='30' cy='70' r='3' fill='%23ffffff'/%3E%3Ccircle cx='70' cy='70' r='3' fill='%23ffffff'/%3E%3Ccircle cx='50' cy='50' r='5' fill='none' stroke='%23ffffff' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-size: 100px 100px;
+}
+
+/* Dotted Grid Pattern */
+.hero-dotted-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.3) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* Glassmorphism Product Card */
+.hero-product-card {
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 1px 0 rgba(255, 255, 255, 0.1) inset;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 1px 0 rgba(255, 255, 255, 0.15) inset,
+    0 0 80px rgba(249, 115, 22, 0.15);
+}
+
+/* Premium Button Glow Effects */
+.hero-btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.hero-btn-primary:hover::before {
+  transform: translateX(100%);
+}
+
+.hero-btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.4), transparent, rgba(249, 115, 22, 0.4));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-btn-primary:hover::after {
+  opacity: 1;
+}
+
+/* Secondary Button Hover */
+.hero-btn-secondary {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-btn-secondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hero-btn-secondary:hover::before {
+  opacity: 1;
+}
+
+/* Floating Animation for Decorative Elements */
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0) rotate(12deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(12deg);
+  }
+}
+
+@keyframes float-slow-reverse {
+  0%, 100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-12deg);
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.animate-float-slow-reverse {
+  animation: float-slow-reverse 8s ease-in-out infinite;
+}
+
+/* Premium Glow Pulse */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(249, 115, 22, 0.5);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ============================================
+   PREMIUM CATEGORIES SECTION STYLES
+   ============================================ */
+
+/* Categories Section Background Patterns */
+.categories-circuit-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40h30v-10h20v10h30' fill='none' stroke='%23334155' stroke-width='0.5'/%3E%3Cpath d='M40 0v30h-10v20h10v30' fill='none' stroke='%23334155' stroke-width='0.5'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23334155'/%3E%3Ccircle cx='10' cy='40' r='2' fill='%23334155'/%3E%3Ccircle cx='70' cy='40' r='2' fill='%23334155'/%3E%3Ccircle cx='40' cy='10' r='2' fill='%23334155'/%3E%3Ccircle cx='40' cy='70' r='2' fill='%23334155'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+.categories-dotted-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgba(100, 116, 139, 0.4) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Category Card Premium Styles */
+.category-card {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.05),
+    0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 20px 40px rgba(249, 115, 22, 0.12);
+}
+
+/* Category CTA Button Glow */
+.category-cta-btn {
+  position: relative;
+}
+
+.category-cta-btn::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.4), transparent, rgba(249, 115, 22, 0.4));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.category-cta-btn:hover::before {
+  opacity: 1;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-container {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-track {
+  flex-shrink: 0;
+  min-width: 100%;
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Pause marquee on hover */
+.marquee-container:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* ============================================
+   PREMIUM DEALER CTA SECTION STYLES
+   ============================================ */
+
+/* Dealer CTA Primary Button */
+.dealer-cta-primary {
+  position: relative;
+}
+
+.dealer-cta-primary::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.5), transparent 50%, rgba(249, 115, 22, 0.5));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dealer-cta-primary:hover::before {
+  opacity: 1;
+}
+
+/* Dealer CTA Secondary Button */
+.dealer-cta-secondary {
+  position: relative;
+}
+
+.dealer-cta-secondary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(249, 115, 22, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.dealer-cta-secondary:hover::before {
+  opacity: 1;
+}
+
+/* ============================================
+   PRODUCT CATEGORY PAGE STYLES
+   ============================================ */
+
+/* Product Card Premium Styles */
+.category-product-card {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.category-product-card:hover {
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.06),
+    0 20px 40px rgba(249, 115, 22, 0.1);
+}
+
+/* Quick View Button Animation */
+.category-product-card .group-hover\:opacity-100 {
+  animation: fadeSlideUp 0.3s ease-out forwards;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth Scrolling for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
