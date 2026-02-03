@@ -227,18 +227,18 @@ export function HeroSection() {
               variants={itemVariants}
               className="mt-12 pt-8 border-t border-white/10"
             >
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 text-sm text-white font-medium drop-shadow-[0_1px_6px_rgba(0,0,0,0.55)]">
-                <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-sm text-white font-semibold drop-shadow-[0_1px_8px_rgba(0,0,0,0.65)]">
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span>ISO Certified</span>
+                  <span className="text-white">ISO Certified</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
                   <div className="w-2 h-2 rounded-full bg-orange-500" />
-                  <span>35+ Years</span>
+                  <span className="text-white">35+ Years</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
                   <div className="w-2 h-2 rounded-full bg-blue-500" />
-                  <span>Pan India</span>
+                  <span className="text-white">Pan India</span>
                 </div>
               </div>
             </motion.div>
